@@ -1,15 +1,23 @@
-from ursina import *
+from ursina import * 
+from ursina.prefabs.first_person_controller Ursina import FirstPersonController
+
+class Voxel(Button):
+    def __init__(self, position = (0,0,0)):
+        super().__init__(
+            parent = scene,
+            position =(0,0,0),
+            model = 'cube',
+            origin_y = 0.5,
+            texture = 'white_cube',
+            color = color.white,
+            highlight_color = color.lime)
 
 app = Ursina()
-player = Entity(model="cube", color=color.red, texture="white_cube", scale_y="2")
 
+for z in range(8):
+    for x in range(8):
+        Voxel = Voxel(position = (x,0,z))
 
-def update():
-    player.rotation_x += held_keys["r"] * 5
-    player.rotation_y += held_keys["r"] * 5
-    player.x -= held_keys["a"] * 0.1
-    player.y -= held_keys["s"] * 0.1
-    player.y += held_keys["w"] * 0.1
-    player.x += held_keys["d"] * 0.1
+player = FirstPersonController
 
 app.run()
